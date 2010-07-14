@@ -37,7 +37,7 @@
   // 2) Once every time the focusout() is triggered.
   function setPlaceholder($elem) {
    var $replacement;
-   if ($elem.val() === '' || $elem.val() === $elem.attr('placeholder')) {
+   if ($elem.val() === '' && $elem.attr('placeholder') !== undefined) {
     if ($elem.is(':password')) {
      try {
       $replacement = $elem.clone().attr({ type: 'text' });
