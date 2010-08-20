@@ -4,6 +4,10 @@
  * @author Mathias Bynens <http://mathiasbynens.be/>
  */
 ;(function($) {
+ // Clear placeholder values upon page reload
+ $(window).unload(function() {
+  $('.placeholder').val('');
+ });
  $.fn.placeholder = function() {
   // Quit if there’s support for HTML5 placeholder
   if (this[0] && 'placeholder' in document.createElement('input')) {
@@ -57,10 +61,6 @@
   $('form:has([placeholder])').submit(function() {
    // Clear the placeholder values so they don’t get submitted
    $('.placeholder', this).val('');
-  });
-  // Clear placeholder values upon page reload
-  $(window).unload(function() {
-   $('.placeholder').val('');
   });
   // Yes, .each() — in case .placeholder() is called on several elements, which is very likely, e.g. $('input').placeholder();
   return this.each(function() {
