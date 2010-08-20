@@ -4,6 +4,7 @@
  * @author Mathias Bynens <http://mathiasbynens.be/>
  */
 ;(function($) {
+ var nativeSupportAvailable = 'placeholder' in document.createElement('input');
  // Clear placeholder values upon page reload
  $(window).unload(function() {
   $('.placeholder').val('');
@@ -53,7 +54,7 @@
  }
  $.fn.placeholder = function() {
   // Quit if there’s support for HTML5 placeholder
-  if (this[0] && 'placeholder' in document.createElement('input')) {
+  if (this[0] && nativeSupportAvailable) {
    // Allow chaining
    return this;
   }
